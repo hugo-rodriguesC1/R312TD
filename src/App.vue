@@ -28,11 +28,24 @@
           <code class="font-mono">liste avec fichier JSON</code>
         </router-link>
       </li>
+      <li>
+        <router-link class="text-red-600 underline" to="/liste-fetch">
+          lien vers
+          <code class="font-mono">liste avec fetch</code>
+        </router-link>
+      </li>
     </ul>
   </nav>
 
   <!-- Affiche les pages -->
-  <router-view class="m-2 border-2 p-2" />
+  <Suspense>
+        <template #default>
+          <router-view class="m-2 border-2 p-2" />
+        </template>
+        <template #fallback>
+            Loading...
+        </template>
+    </Suspense>
 </template>
 
 <script setup lang="ts">
