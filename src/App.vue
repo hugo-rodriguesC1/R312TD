@@ -22,6 +22,12 @@
           <code class="font-mono">liste</code>
         </router-link>
       </li>
+      <li>
+        <router-link class="text-red-600 underline" to="/listeJson">
+          lien vers
+          <code class="font-mono">liste avec fichier JSON</code>
+        </router-link>
+      </li>
     </ul>
   </nav>
 
