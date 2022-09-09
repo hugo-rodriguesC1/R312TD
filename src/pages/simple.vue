@@ -1,5 +1,14 @@
 <script setup>
 import Card from "../components/card.vue";
+let maison = {
+  price: 2700,
+  name: "Palm Harbor",
+  adress: "2699 Green Valley, Highland Lake",
+  nb: 3,
+  nsdb: 3,
+  surface: "7x8",
+  image: "/src/assets/img2.jpg",
+};
 </script>
     
 <template>
@@ -14,5 +23,6 @@ import Card from "../components/card.vue";
             :nsdb="2"
             surface="6x7.5"
             image="/src/assets/img1.jpg"/>
+    <Card v-bind="maison"/>
 </template>
 
