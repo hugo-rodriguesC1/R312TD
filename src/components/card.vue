@@ -1,42 +1,66 @@
-<script>
-import bath from "./icones/bath.vue";
+<script setup>
 import heart from "./icones/heart.vue";
-
-export default {
-  /* Les "props" servent à définir les "attributs" qui seront passés a l'instance du composant pour le personnalisé.
-  Chaque "props" a un nom et un type */
-  props: {
-    nom: String,
-    prix: Number,
-    favori: Boolean,
-    image: String, // les images sont simplement l'URL absolue (depuis la racine, débute par '/' )
-    nbrSDB: Number,
+import dimension from "./icones/dimension.vue";
+import bath from "./icones/bath.vue";
+import bed from "./icones/bed.vue";
+const properties = defineProps({
+  price: Number,
+  favoris: {
+    type: Boolean,
+    default: false,
   },
-  components: { bath, heart },
-};
+  name: String,
+  adress: String,
+  nb: Number,
+  nsdb: Number,
+  surface: String,
+  image: String,
+});
 </script>
 
 <template>
-  <figure>
-    <!-- Pour changer la valeur d'un attribut on utilise un "binding" :
-    https://vuejs.org/guide/essentials/template-syntax.html#attribute-bindings 
-    Ici on affecte à l'attribut 'src' la 'props' "image" -->
-    <img class="w-full h-48 object-cover" :src="image" alt="" />
+  <figure class="mb-6 mx-4">
+    <img class="rounded-t-lg" :src="image" alt="Image maison" />
     <figcaption
-      class="relative flex flex-col border-2 border-t-0 border-indigo-100"
+      class="relative flex flex-col rounded-b-lg border-2 border-t-0 px-5 py-7"
     >
-      <!-- Pour changer une classe CSS en fonction d'un booléen : 
-      https://vuejs.org/guide/essentials/class-and-style.html#binding-html-classes -->
-      <heart :class="{ 'fill-red-300': favori }" />
-
-      <!-- Pour afficher du contenu textuel, simplement utiliser l'interpolation par double accolades (qui contiendront le JS dont l'interpretation donne le résultat affiché). -->
-      <div class="text-2xl font-bold text-indigo-500 pr-1">${{ prix }}</div>
-
-      <h3 class="text-2xl text-gray-900">{{ nom }}</h3>
-
-      <hr class="border-indigo-100 border-t-2 my-4" />
-
-      <div><bath class="inline-block pr-1" />{{ nbrSDB }} Bathrooms</div>
+      <h3 class="text-2xl font-semibold leading-8 text-gray-900">
+        {{name}}
+      </h3>
+      <address class="not-italic text-gray-500">
+        {{adress}}
+      </address>
+      <div class="-order-1 flex items-center">
+        <div class="text-2xl text-indigo-500">
+          ${{ price.toLocaleString("en-US") }}
+        </div>
+        <div class="text-gray-500">/months</div>
+      </div>
+      <hr class="my-2 border-t-2 border-indigo-100" />
+      <div class="flex justify-between text-sm font-normal">
+        <div><bed class="inline-block align-top" />{{nb}} Beds</div>
+        <div><bath class="inline-block align-top" />{{nsdb}} Bathrooms</div>
+        <div><dimension class="inline-block align-top" /> {{surface}} m²</div>
+      </div>
+      <div
+        class="
+          absolute
+          top-0
+          right-0
+          grid
+          h-12
+          w-12
+          place-items-center
+          rounded-full
+          border-2 border-indigo-100
+        "
+      >
+        <heart
+          v-on:click="favoris = !favoris"
+          :class="{ 'fill-red-400': favoris }"
+        />
+      </div>
     </figcaption>
   </figure>
 </template>
+
