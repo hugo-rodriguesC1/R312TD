@@ -32,7 +32,8 @@ const properties = defineProps({
       </address>
       <div class="-order-1 flex items-center">
         <div class="text-2xl text-indigo-500">
-          ${{ price.toLocaleString("en-US") }}
+          <!-- ${{ price.toLocaleString("en-US") }} -->
+          {{price}}
         </div>
         <div class="text-gray-500">/months</div>
       </div>

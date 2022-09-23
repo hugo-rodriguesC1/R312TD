@@ -9,7 +9,7 @@ defineProps({ nbr: String });
             <div>
                 <div class="p-2">Page liste avec routes dynamiques</div>
             </div>
-                <Card v-bind="maisons[nbr]"/>
+                <Card v-bind="maisons[Number(nbr)]"/>
 
     
     
