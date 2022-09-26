@@ -4,6 +4,7 @@ import dimension from "./icones/dimension.vue";
 import bath from "./icones/bath.vue";
 import bed from "./icones/bed.vue";
 const properties = defineProps({
+  maison_code: String,
   price: Number,
   favoris: {
     type: Boolean,

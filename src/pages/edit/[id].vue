@@ -1,16 +1,15 @@
 <script setup>
 import FormulaireOffreMaison from "../../components/FormulaireOffreMaison.vue";
+import { ref } from "vue";
 import { supabase } from "../../supabase";
+let maison = ref();
 
-defineProps({ id: Number });
-
-let { data: maison, error } = await supabase.from("maison").select("*");
-const maisons = maison; // à remplacer par l'appel à Supabase
+defineProps({ id: String });
 </script>
     
     <template>
         <div>
-            <FormulaireOffreMaison :idMaison=id
+            <FormulaireOffreMaison :id="id"
             />
         </div>
     </template>
