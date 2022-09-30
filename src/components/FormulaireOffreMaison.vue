@@ -62,7 +62,7 @@ if (error) console.log("n'a pas pu charger la vue quartiercommune :", error);
                 <FormKit name="quartier_code" label="Quartier" type="select" v-model="value">
                   <option value="" :disabled="true">Choisir un quartier...</option>
                   <optgroup v-for="(quartier, commune_nom) in groupBy(dataQuartierCommune,'commune_nom')" :key="commune_nom" v-bind:label="commune_nom">
-                    <option v-for="quartierObject in quartier" :key="quartierObject.id" value={{quartierObject.quartier_code}}>{{quartierObject.quartier_nom}}</option>
+                    <option v-for="quartierObject in quartier" :key="quartierObject.id" v-bind:value="quartierObject.quartier_code">{{quartierObject.quartier_nom}}</option>
                   </optgroup>
                 </FormKit>
             </FormKit>
